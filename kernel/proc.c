@@ -432,4 +432,6 @@ void procdump(void) {
   }
 }
 
-int nice(int inc)
+int nice(int inc) {
+  
+}
