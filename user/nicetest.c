@@ -5,13 +5,14 @@
 #define N 15
 
 int main(void) {
-    int nVal, pid;
-    for(int i=-N;i<N;i++){
+    int nVal = nice(0), pid;
+    for(int i=-N;i<=N;i++){
         pid = fork();
         if(pid == 0){
-            
-        } else {
-            
+            nVal = nice(-N * 2);
         }
+    }
+    if(pid !=0){
+        
     }
 }
