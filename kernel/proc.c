@@ -118,10 +118,10 @@ int growproc(int n) {
 int nice(int inc) {
   int currNice = proc->nice;
   int newNice = currNice + inc;
-  if(newNice > 20){
+  if(newNice >= 20){
+    newNice = 19;
+  }else if(newNice < -20){
     newNice = 20;
-  }else if(newNice < -19){
-    newNice = -19;
   }
   proc->nice = newNice;
   return newNice;
