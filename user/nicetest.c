@@ -9,10 +9,11 @@ int main(void) {
     for(int i=-N;i<=N;i++){
         pid = fork();
         if(pid == 0){
-            nVal = nice(-N * 2);
+            nVal = nice(-i * 2);
         }
     }
+    printf(1, "Pid: %d, Nice value: %d", pid, nVal);
     if(pid !=0){
-        
+        wait();
     }
 }
