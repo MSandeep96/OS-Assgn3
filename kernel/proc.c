@@ -113,13 +113,18 @@ int growproc(int n) {
   return 0;
 }
 
-
-
+// Set the nice value of the process
+// Clamped to 20 and -19
 int nice(int inc) {
   int currNice = proc->nice;
-  if(currNice + inc > 20){
-    
+  int newNice = currNice + inc;
+  if(newNice > 20){
+    newNice = 20;
+  }else if(newNice < -19){
+    newNice = -19;
   }
+  proc->nice = newNice;
+  return newNice;
 }
 
 // Create a new process copying p as the parent.
