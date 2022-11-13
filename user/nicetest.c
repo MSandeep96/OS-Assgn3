@@ -2,7 +2,7 @@
 #include "kernel/stat.h"
 #include "user.h"
 
-#define N 10
+#define N 15
 
 int main(void) {
     int nVal, pid;
