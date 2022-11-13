@@ -8,7 +8,12 @@
 #include "kernel/proc.h"
 
 int sys_fork(void) { return fork(); }
-int sys_nice(void) { return nice(inc); }
+
+int sys_nice(void) { 
+  int inc;
+  argint(0, &inc);
+  return nice(inc);
+}
 
 int sys_exit(void) {
   exit();
