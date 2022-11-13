@@ -13,7 +13,4 @@ int main(void) {
         }
     }
     printf(1, "Pid: %d, Nice value: %d", pid, nVal);
-    if(pid !=0){
-        wait();
-    }
 }
