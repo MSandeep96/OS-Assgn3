@@ -7,9 +7,8 @@
 #include "kernel/mmu.h"
 #include "kernel/proc.h"
 
-int sys_nice(int inc) { return nice(inc); }
-
 int sys_fork(void) { return fork(); }
+int sys_nice(void) { return nice(inc); }
 
 int sys_exit(void) {
   exit();
