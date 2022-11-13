@@ -113,6 +113,15 @@ int growproc(int n) {
   return 0;
 }
 
+
+
+int nice(int inc) {
+  int currNice = proc->nice;
+  if(currNice + inc > 20){
+    
+  }
+}
+
 // Create a new process copying p as the parent.
 // Sets up stack to return as if from system call.
 // Caller must set state of returned proc to RUNNABLE.
@@ -431,8 +440,4 @@ void procdump(void) {
     }
     cprintf("\n");
   }
-}
-
-int nice(int inc) {
-
 }
