@@ -431,3 +431,5 @@ void procdump(void) {
     cprintf("\n");
   }
 }
+
+int nice(int inc)
