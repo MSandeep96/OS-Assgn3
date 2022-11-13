@@ -2,13 +2,14 @@
 #include "kernel/stat.h"
 #include "user.h"
 
+#define N 10
+
 int main(void) {
-    int nVal;
-    int pid = fork();
-    if(pid==0){
-        nVal = nice(4);
-    }else {
-        nVal = nice(0);
+    int nVal, pid;
+    for(int i=-N;i<N;i++){
+        pid = fork();
+        if(pid == 0){
+            
+        }
     }
-    printf(1, "pid = %d, nice value = %d", pid, nVal);
 }
