@@ -10,6 +10,8 @@ int main(void) {
         pid = fork();
         if(pid == 0){
             
+        } else {
+            
         }
     }
 }
