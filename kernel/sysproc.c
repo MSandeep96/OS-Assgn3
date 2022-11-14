@@ -6,6 +6,7 @@
 #include "kernel/memlayout.h"
 #include "kernel/mmu.h"
 #include "kernel/proc.h"
+#include "kernel/random.h"
 
 int sys_fork(void) { return fork(); }
 
@@ -13,6 +14,17 @@ int sys_nice(void) {
   int inc;
   argint(0, &inc);
   return nice(inc);
+}
+
+int sys_srand(void) {
+  int seed;
+  argint(0, &seed);
+  srand(seed);
+  return 0;
+}
+
+int sys_rand(void){
+  return rand();
 }
 
 int sys_exit(void) {

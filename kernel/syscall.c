@@ -87,6 +87,8 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_nice(void);
+extern int sys_srand(void);
+extern int sys_rand(void);
 
 static int (*syscalls[])(void) = {
     [SYS_fork] sys_fork,   [SYS_exit] sys_exit,     [SYS_wait] sys_wait,
@@ -96,7 +98,7 @@ static int (*syscalls[])(void) = {
     [SYS_sleep] sys_sleep, [SYS_uptime] sys_uptime, [SYS_open] sys_open,
     [SYS_write] sys_write, [SYS_mknod] sys_mknod,   [SYS_unlink] sys_unlink,
     [SYS_link] sys_link,   [SYS_mkdir] sys_mkdir,   [SYS_close] sys_close,
-    [SYS_nice] sys_nice
+    [SYS_nice] sys_nice, [SYS_srand] sys_srand, [SYS_rand] sys_rand
 };
 
 void syscall(void) {
