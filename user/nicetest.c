@@ -2,15 +2,18 @@
 #include "kernel/stat.h"
 #include "user.h"
 
-#define N 15
+#define N 5
 
 int main(void) {
     int nVal = nice(0), pid;
     for(int i=-N;i<=N;i++){
         pid = fork();
         if(pid == 0){
-            nVal = nice(-i * 2);
+            nVal = nice(-i * 6);
+            printf(1, "Pid: %d, Nice value: %d", pid, nVal);
+            exit();
         }
     }
+    wait();
     printf(1, "Pid: %d, Nice value: %d", pid, nVal);
 }
