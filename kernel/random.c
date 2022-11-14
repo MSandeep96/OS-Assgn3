@@ -5,7 +5,7 @@ void srand(unsigned seed) {
 }
 
 int rand(void){
-    int x = a;
+    unsigned x = a;
 	x ^= x << 13;
 	x ^= x >> 17;
 	x ^= x << 5;

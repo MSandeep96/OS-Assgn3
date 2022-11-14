@@ -4,8 +4,8 @@
 
 int main(void) {
     srand(10);
-    int t = rand();
-    int min = t, max = t;
+    unsigned t = rand();
+    unsigned min = t, max = t;
     float mean = t;
     int t_count = 1;
     for(int i=0;i<N-1;i++){
@@ -18,5 +18,5 @@ int main(void) {
         float newMean = (t-mean) / t_count;
         mean += newMean;
     }
-    printf(1, "Min: %d, Max: %d, Mean: %f", min, max, mean);
+    printf(1, "Min: %d, Max: %d, Mean: %d", min, max, (int)mean);
 }
