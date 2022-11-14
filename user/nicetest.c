@@ -2,19 +2,21 @@
 #include "kernel/stat.h"
 #include "user.h"
 
-#define N 1
+#define N 15
 
 int main(void) {
-    int nVal = nice(0), pid;
+    int nVal = nice(0), retVal;
     for(int i=-N;i<=N;i++){
-        pid = fork();
-        if(pid == 0){
-            nVal = nice(-i * 6);
-            printf(1, "Pid: %d, Nice value: %d", pid, nVal);
+        retVal = fork();
+        if(retVal == 0){
+            nVal = nice(-i * 2);
+            printf(1, "Pid: %d, Nice value: %d \n", getpid(), nVal);
             exit();
         }
     }
-    wait();
-    printf(1, "Pid: %d, Nice value: %d", pid, nVal);
+    for(int i=-N;i<=N;i++){
+        wait();
+    }
+    printf(1, "Pid: %d, Nice value: %d \n", getpid(), nVal);
     exit();
 }
