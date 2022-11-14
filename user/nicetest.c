@@ -2,7 +2,7 @@
 #include "kernel/stat.h"
 #include "user.h"
 
-#define N 5
+#define N 1
 
 int main(void) {
     int nVal = nice(0), pid;
@@ -16,4 +16,5 @@ int main(void) {
     }
     wait();
     printf(1, "Pid: %d, Nice value: %d", pid, nVal);
+    exit();
 }
