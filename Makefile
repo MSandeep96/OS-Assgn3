@@ -31,6 +31,7 @@ OBJS = \
 	$K/trapasm.o\
 	$K/vm.o\
 	$K/entry.o\
+	$K/random.o\
 
 all: xv6.img
 

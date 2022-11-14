@@ -1634,7 +1634,8 @@ void fsfull() {
 }
 
 unsigned long randstate = 1;
-unsigned int rand() {
+
+unsigned int random() {
   randstate = randstate * 1664525 + 1013904223;
   return randstate;
 }
