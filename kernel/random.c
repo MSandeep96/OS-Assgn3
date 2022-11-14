@@ -1,12 +1,10 @@
-#include "random.h"
-
 unsigned a = 1;
 
 void srand(unsigned seed) {
     a = seed; 
 }
 
-int rand(){
+int rand(void){
     int x = a;
 	x ^= x << 13;
 	x ^= x >> 17;

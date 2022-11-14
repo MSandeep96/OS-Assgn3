@@ -29,6 +29,8 @@ char *sbrk(int);
 int sleep(int);
 int uptime(void);
 int nice(int inc);
+void srand(unsigned int seed);
+int rand(void);
 
 // ulib.c
 int stat(char *, struct stat *);

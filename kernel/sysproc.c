@@ -6,7 +6,6 @@
 #include "kernel/memlayout.h"
 #include "kernel/mmu.h"
 #include "kernel/proc.h"
-#include "kernel/random.h"
 
 int sys_fork(void) { return fork(); }
 

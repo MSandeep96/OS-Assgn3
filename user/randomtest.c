@@ -1,4 +1,3 @@
-#include "kernel/random.h"
 #include "user.h"
 
 #define N 1000
