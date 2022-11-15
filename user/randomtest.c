@@ -1,6 +1,6 @@
 #include "user.h"
 
-#define N 1000
+#define N 20
 
 int main(void) {
     
@@ -11,6 +11,7 @@ int main(void) {
     int t_count = 1;
     for(int i=0;i<N-1;i++){
         t = rand();
+        printf(1, "%d", t);
         t_count++;
         if(t < min)
             min = t;
