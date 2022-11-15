@@ -1,8 +1,9 @@
 #include "user.h"
 
-#define N 10000
+#define N 200000
 
 int main(void) {
+    srand(34);
     int t = rand();
     int min = t, max = t;
     float mean = t;
