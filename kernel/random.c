@@ -1,6 +1,7 @@
 unsigned a = 1;
 
 void srand(unsigned seed) {
+	if(seed) seed = 1;
     a = seed; 
 }
 

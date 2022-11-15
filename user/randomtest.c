@@ -3,10 +3,8 @@
 #define N 1000
 
 int main(void) {
-    
-    srand(288);
-    unsigned t = rand();
-    unsigned min = t, max = t;
+    int t = rand();
+    int min = t, max = t;
     float mean = t;
     int t_count = 1;
     for(int i=0;i<N-1;i++){
