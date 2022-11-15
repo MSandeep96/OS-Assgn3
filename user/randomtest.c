@@ -1,17 +1,16 @@
 #include "user.h"
 
-#define N 20
+#define N 1000
 
 int main(void) {
     
-    srand(25);
+    srand(288);
     unsigned t = rand();
     unsigned min = t, max = t;
     float mean = t;
     int t_count = 1;
     for(int i=0;i<N-1;i++){
         t = rand();
-        printf(1, "%d", t);
         t_count++;
         if(t < min)
             min = t;
@@ -20,6 +19,6 @@ int main(void) {
         float newMean = (t-mean) / t_count;
         mean += newMean;
     }
-    printf(1, "Min: %d, Max: %d, Mean: %d \n", min, max, (int)mean);
+    printf(1, "Min: %d, Max: %d, Mean: %d, Min + Max/2 : %d \n", min, max, (int)mean, (min+max)/2);
     exit();
 }
