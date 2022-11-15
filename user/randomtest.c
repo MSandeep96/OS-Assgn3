@@ -3,7 +3,8 @@
 #define N 1000
 
 int main(void) {
-    srand(10);
+    
+    srand(25);
     unsigned t = rand();
     unsigned min = t, max = t;
     float mean = t;
@@ -18,5 +19,6 @@ int main(void) {
         float newMean = (t-mean) / t_count;
         mean += newMean;
     }
-    printf(1, "Min: %d, Max: %d, Mean: %d", min, max, (int)mean);
+    printf(1, "Min: %d, Max: %d, Mean: %d \n", min, max, (int)mean);
+    exit();
 }
