@@ -5,6 +5,7 @@ void srand(unsigned seed) {
     a = seed; 
 }
 
+// Range: 0 - 2^16
 int rand(void){
     unsigned x = a;
 	x ^= x << 13;

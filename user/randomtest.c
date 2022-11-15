@@ -1,6 +1,6 @@
 #include "user.h"
 
-#define N 1000
+#define N 10000
 
 int main(void) {
     int t = rand();
@@ -17,6 +17,6 @@ int main(void) {
         float newMean = (t-mean) / t_count;
         mean += newMean;
     }
-    printf(1, "Min: %d, Max: %d, Mean: %d, Min + Max/2 : %d \n", min, max, (int)mean, (min+max)/2);
+    printf(1, "Min: %d, Max: %d, Mean: %d, Min + Max/2 : %d \n", min, max, (int)mean, min + (max - min)/2);
     exit();
 }
