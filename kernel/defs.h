@@ -126,6 +126,7 @@ void yield(void);
 int nice(int inc);
 
 //random.c
+unsigned RANDOM_MAX;
 void srand(unsigned int seed);
 int rand(void);
 

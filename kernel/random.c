@@ -1,16 +1,16 @@
+// Generates a random number between 1 and 32767
+
+unsigned RANDOM_MAX = 32768;
+
 unsigned a = 1;
 
-void srand(unsigned seed) {
-	if(seed) seed = 1;
-    a = seed; 
+void srand(unsigned seed)
+{
+	a = seed;
 }
 
-// Range: 0 - 2^16
-int rand(void){
-    unsigned x = a;
-	x ^= x << 13;
-	x ^= x >> 17;
-	x ^= x << 5;
-	return (a = x)/2;
+int rand(void)
+{
+	a = a * 1103515245 + 12345;
+	return (unsigned int)(a/65536) % RANDOM_MAX;
 }
-

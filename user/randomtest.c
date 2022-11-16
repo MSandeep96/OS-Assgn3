@@ -1,9 +1,15 @@
 #include "user.h"
 
-#define N 200000
-
-int main(void) {
-    srand(34);
+int main(int argc, char *argv[]) {
+    int seed = 1;
+    int N = 1000;
+    if(argc >= 2) {
+        seed = atoi(argv[1]);
+    }
+    if (argc >= 3) {
+        N = atoi(argv[2]);
+    }
+    srand(seed);
     int t = rand();
     int min = t, max = t;
     float mean = t;

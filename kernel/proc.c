@@ -64,7 +64,7 @@ found:
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
   p->nice = 0;
-
+  p->tickets = (50 - (p->nice * 2)) * 10;
   return p;
 }
 
@@ -73,7 +73,7 @@ found:
 void userinit(void) {
   struct proc *p;
   extern char _binary_user_initcode_start[], _binary_user_initcode_size[];
-
+  srand(10454);
   p = allocproc();
   initproc = p;
   if ((p->pgdir = setupkvm()) == 0)
@@ -114,16 +114,17 @@ int growproc(int n) {
 }
 
 // Set the nice value of the process
-// Clamped to 20 and -19
+// Clamped to -20 and 19
 int nice(int inc) {
   int currNice = proc->nice;
   int newNice = currNice + inc;
   if(newNice >= 20){
     newNice = 19;
   }else if(newNice < -20){
-    newNice = 20;
+    newNice = -20;
   }
   proc->nice = newNice;
+  proc->tickets = (50 - (newNice * 2)) * 10;
   return newNice;
 }
 
@@ -148,6 +149,8 @@ int fork(void) {
   np->sz = proc->sz;
   np->parent = proc;
   *np->tf = *proc->tf;
+  np->nice = proc->nice;
+  np->tickets = proc->tickets;
 
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
@@ -276,10 +279,23 @@ void scheduler(void) {
 
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
+
+    int total_tickets = 0;
+
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+      if(p->state == RUNNABLE) {
+        total_tickets += p->tickets;
+      }
+    }
+    int winningTicket = (int)(((float)rand() / RANDOM_MAX) * total_tickets);
+    int counter = 0;
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
       if (p->state != RUNNABLE)
         continue;
-
+      counter += p->tickets;
+      if(counter < winningTicket) {
+        continue;
+      }
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
@@ -293,6 +309,10 @@ void scheduler(void) {
       // Process is done running for now.
       // It should have changed its p->state before coming back.
       proc = 0;
+
+      if(counter >= winningTicket) {
+        break;
+      }
     }
     release(&ptable.lock);
   }
